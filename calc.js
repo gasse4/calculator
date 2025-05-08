@@ -11,7 +11,7 @@ const symbolMap = {
 
 function clear() {
     console.log("Cleared");
-    document.querySelector('.screen').innerText = 0;
+    document.querySelector('.screen').innerText = "0";
 }
 
 function addToDisplay(value) {
