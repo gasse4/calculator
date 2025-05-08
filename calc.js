@@ -1,3 +1,31 @@
+let darkmode = localStorage.getItem('darkmode');
+const themeSwitch = document.getElementById('theme-toggle');
+
+const enableDarkMode = () => {
+    document.body.classList.add('darkmode');
+    localStorage.setItem('darkmode', 'active');
+}
+
+const disableDarkMode = () => {
+    document.body.classList.remove('darkmode');
+    localStorage.setItem('darkmode', 'null');
+}
+
+
+
+themeSwitch.addEventListener('click', function() {
+    darkmode = localStorage.getItem('darkmode');
+    darkmode !== "active" ? enableDarkMode() : disableDarkMode();
+});
+
+if (darkmode === "active") {
+    enableDarkMode();
+}
+else {
+    disableDarkMode();
+}
+
+
 const symbols = ['+', '-', '*', '/', '%', 'C', '=', '←'];
 const symbolMap = {
     '÷': '/',
@@ -70,7 +98,7 @@ function buttonClick(value) {
 
 
 function init() {
-    document.querySelector('.calc-buttons').addEventListener("click", function (event) {
+        document.querySelector('.calc-buttons').addEventListener("click", function (event) {
         if (event.target.tagName === "BUTTON") {
             buttonClick(event.target.innerText);
         }

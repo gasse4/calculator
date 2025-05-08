@@ -1,27 +1,69 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --bg-color: #e2e0e0;
+    --screen-bg: #cacaca;
+    --buttons-bg: #f0f0f0;
+    --shadow-color: #0505051a;
+    --header-color:var(#6c757d);
+    --text-color:#000;
+}
+
+.darkmode {
+    --primary-color: #013874;
+    background-color: var(--dark-color);
+    color: var (--light-color);
+    --header-color:var(#afbbc5);
+    --bg-color: #858585;
+    --text-color:#dddddd;
+
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--dark-color);
+    transition: ease 0.3s;
+    padding-top: 80px; 
+}
 .header{
-    background-color: #f8f9fa;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--header-color);
     padding: 15px;
     text-align: center;
+    z-index: 1000;
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 .header > p{
-font-family: 'Courier New', Courier, monospace;
-text-align: center;
-font-size: 1.5em;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 1.5em;
+    color: var(--text-color);
+    margin: 0;
+    transition: all 0.3s ease;
 }
 
 .container{
     margin: 0 auto;
     max-width: 600px;
     padding: 20px;
-    background-color: #e2e0e0;
+    background-color: var(--bg-color);
     border-radius: 8px;
-    box-shadow: 0 2px 4px #0505051a;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: all 0.3s ease;
 }
 
 .screen{
     width: 100%;
     border-radius: 8px 8px 0px 0px;
-    background-color: #cacaca;
+    background-color: var(--screen-bg);
     padding: 10px;
     margin: 0px;
     text-align: end;
@@ -31,9 +73,13 @@ font-size: 1.5em;
 .calc-buttons {
     display: flex;
     flex-direction: column;
-    background-color: #f0f0f0;
+    background-color: var(--buttons-bg);
     border-radius: 0 0 8px 8px;
     padding: 10px;
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+
+
 }
 
 .calc-button-row {
@@ -47,8 +93,8 @@ font-size: 1.5em;
     margin: 0;
     border-radius: 8px;
     border: none;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--light-color);
     font-size: 1.2em;
     cursor: pointer;
     flex: 1;
@@ -57,6 +103,8 @@ font-size: 1.5em;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
+
 }
 .calc-button:last-child {
     margin-right: 0;
@@ -77,3 +125,101 @@ font-size: 1.5em;
 .calc-button:active {
     background-color: #004085;
 }
+
+.toggle {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    gap: 20px;
+}
+
+.toggle-btn {
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    position: relative;
+}
+
+.toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.toggle-btn img {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+    position: absolute;
+}
+
+body:not(.darkmode) .light-icon {
+    display: none;
+}
+
+body:not(.darkmode) .dark-icon {
+    display: block;
+}
+
+body.darkmode .dark-icon {
+    display: none;
+}
+
+body.darkmode .light-icon {
+    display: block;
+}
+
+body:not(.darkmode) .toggle-btn {
+    background-color: #1a1a2e;
+}
+
+body.darkmode .toggle-btn {
+    background-color: #f9a825;
+}
+
+.toggle button {
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.toggle button:hover {
+    background-color: #93a5b3;
+}
+.toggle button:active {
+    background-color: #343a40;
+
+}
+.toggle button img {
+    width: 20px;
+    height: 20px;
+}
+
+.toggle button img:last-child{
+   display: initial;
+}
+
+.darkmode .toggle button img:first-child{
+   display: none;
+}
+
+.darkmode .toggle button img:first-child{
+    display: block;
+ }
