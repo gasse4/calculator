@@ -1,4 +1,4 @@
-const symbols = ['+', '-', '*', '/' ,'%', 'C', '=', '←']; // أضفنا السهم إلى الرموز
+const symbols = ['+', '-', '*', '/', '%', 'C', '=', '←']; // أضفنا السهم إلى الرموز
 const symbolMap = {
     '÷': '/',
     '×': '*',
@@ -9,23 +9,23 @@ const symbolMap = {
 };
 
 
-function  clear(){
+function clear() {
     console.log("Cleared");
     document.querySelector('.screen').innerText = 0;
 }
 
-function addToDisplay(value){
+function addToDisplay(value) {
     value = symbolMap[value] || value;
     const screen = document.querySelector('.screen');
-if (screen.innerText === "0" && !symbols.includes(value)){
-    screen.innerText = value;
-} else {
-    screen.innerText += value;
-}
+    if (screen.innerText === "0" && !symbols.includes(value)) {
+        screen.innerText = value;
+    } else {
+        screen.innerText += value;
+    }
 }
 
 
-function backspace(){
+function backspace() {
     const screen = document.querySelector('.screen');
     if (screen.innerText.length > 1) {
         screen.innerText = screen.innerText.slice(0, -1);
@@ -33,7 +33,8 @@ function backspace(){
         screen.innerText = '0';
     }
 }
-calculate(){
+
+function calculate(){
     const screen = document.querySelector('.screen');
     let exrpression = screen.innerText;
     exrpression = exrpression.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
@@ -41,14 +42,19 @@ calculate(){
         const result = eval(exrpression);
         screen.innerText = result;
     }
+    catch (error){
+        console.error("Error in calculation: ", error);
+        screen.innerText = "Error";
+    }
+    
 
 }
 
-function buttonClick(value){
-    if (isNaN(value) && symbols.includes(value)){
-        if (value === "C"){
+function buttonClick(value) {
+    if (isNaN(value) && symbols.includes(value)) {
+        if (value === "C") {
             clear();
-        } else if (value === "="){
+        } else if (value === "=") {
             console.log("Calculating");
             calculate();
         } else if (value === "←") {
@@ -63,8 +69,8 @@ function buttonClick(value){
 }
 
 
-function init(){
-    document.querySelector('.calc-buttons').addEventListener("click", function (event){
+function init() {
+    document.querySelector('.calc-buttons').addEventListener("click", function (event) {
         if (event.target.tagName === "BUTTON") {
             buttonClick(event.target.innerText);
         }
