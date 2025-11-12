@@ -35,6 +35,33 @@ A sleek, responsive calculator with dark mode support and keyboard functionality
 2. Or run a local server: `python3 -m http.server 8000`
 3. Navigate to `http://localhost:8000`
 
+## Deploying to GitHub Pages
+
+This repository includes a GitHub Actions workflow that will automatically publish the site to GitHub Pages on every push to the `main` branch.
+
+What I added:
+- `.github/workflows/deploy-gh-pages.yml` — action that publishes the repository root to the `gh-pages` branch using `peaceiris/actions-gh-pages`.
+- `.nojekyll` — prevents GitHub Pages from processing the site with Jekyll (so files like those starting with `_` won't be filtered).
+
+How to enable deployment:
+
+1. Commit and push your changes to the `main` branch on GitHub.
+2. GitHub Actions will run the workflow and push a `gh-pages` branch containing the published site.
+3. In your repository on GitHub go to Settings → Pages and set Source to `gh-pages` branch (if GitHub doesn't already show the published site). The Actions workflow usually sets up the `gh-pages` branch automatically but you may need to select it once.
+
+Notes & troubleshooting:
+- The workflow uses the built-in `GITHUB_TOKEN` so no extra secrets are required.
+- If you prefer the Pages source to be `docs/` on `main`, I can adjust the workflow to publish to that instead.
+- I cannot push to your remote from here. After these files are in your repo, push to GitHub to trigger the action:
+
+```bash
+git add .
+git commit -m "Add GitHub Pages deployment workflow"
+git push origin main
+```
+
+After the push, open the Actions tab in GitHub to watch the deploy job. Once it completes, visit your repository's Pages URL (often `https://<username>.github.io/<repo>/`).
+
 ## Browser Support
 
 Works in all modern browsers that support CSS Grid and ES6+ JavaScript.
