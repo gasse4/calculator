@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="A modern, responsive calculator with dark mode support">
+    <meta name="keywords" content="calculator, math, arithmetic, dark mode">
+    <meta name="author" content="Calculator App">
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <base href="./">
+</head>
+
+<body>
+    <div class="header">
+        <p>Modern Calculator</p>
+    </div>
+    <div class="toggle">
+        <button id="theme-toggle" class="toggle-btn" aria-pressed="false" aria-label="Toggle theme" title="Toggle dark / light">
+            <img class="dark-icon" src="https://www.svgrepo.com/show/304625/moon-dark-theme.svg" alt="Enable dark mode">
+            <img class="light-icon" src="https://static.thenounproject.com/png/4808961-200.png" alt="Enable light mode">
+        </button>
+    </div>
+    <div class="container">
+        <section class="screen" role="status" aria-live="polite" aria-atomic="true">0</section>
+        <section class="calc-buttons">
+            <div class="calc-button-row">
+                <button type="button" class="calc-button double" aria-label="Clear">C</button>
+                <button type="button" class="calc-button" aria-label="Backspace">&#8592;</button>
+                <button type="button" class="calc-button" aria-label="Divide">&#xf7;</button>
+            </div>
+            <div class="calc-button-row">
+                <button type="button" class="calc-button" aria-label="7">7</button>
+                <button type="button" class="calc-button" aria-label="8">8</button>
+                <button type="button" class="calc-button" aria-label="9">9</button>
+                <button type="button" class="calc-button" aria-label="Multiply">&#xd7;</button>
+            </div>
+            <div class="calc-button-row">
+                <button type="button" class="calc-button" aria-label="4">4</button>
+                <button type="button" class="calc-button" aria-label="5">5</button>
+                <button type="button" class="calc-button" aria-label="6">6</button>
+                <button type="button" class="calc-button" aria-label="Minus">&#x2212;</button>
+            </div>
+            <div class="calc-button-row">
+                <button type="button" class="calc-button" aria-label="1">1</button>
+                <button type="button" class="calc-button" aria-label="2">2</button>
+                <button type="button" class="calc-button" aria-label="3">3</button>
+                <button type="button" class="calc-button" aria-label="Plus">&#x2b;</button>
+            </div>
+            <div class="calc-button-row">
+                <button type="button" class="calc-button triple" aria-label="0">0</button>
+                <button type="button" class="calc-button" aria-label="Decimal">.</button>
+                <button type="button" class="calc-button" aria-label="Equals">&#x3d;</button>
+
+            </div>
+
+
+        </section>
+    </div>
+    <script src="./calc.js" defer></script>
+    <script src="./derkmode.js" defer></script>
+</body>
+
+</html>
