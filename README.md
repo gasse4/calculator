@@ -37,7 +37,7 @@ A sleek, responsive calculator with dark mode support and keyboard functionality
 
 ## Deploying to GitHub Pages
 
-This repository includes a GitHub Actions workflow that will automatically publish the site to GitHub Pages on every push to the `main` branch.
+This repository includes a GitHub Actions workflow that will automatically publish the site to GitHub Pages on every push to the `main` or `master` branch.
 
 What I added:
 - `.github/workflows/deploy-gh-pages.yml` — action that publishes the repository root to the `gh-pages` branch using `peaceiris/actions-gh-pages`.
@@ -45,9 +45,24 @@ What I added:
 
 How to enable deployment:
 
-1. Commit and push your changes to the `main` branch on GitHub.
-2. GitHub Actions will run the workflow and push a `gh-pages` branch containing the published site.
-3. In your repository on GitHub go to Settings → Pages and set Source to `gh-pages` branch (if GitHub doesn't already show the published site). The Actions workflow usually sets up the `gh-pages` branch automatically but you may need to select it once.
+1. Commit your changes locally.
+2. Push to the branch you use as your default on GitHub (`main` or `master`). For example, if your current branch is `master` run:
+
+```bash
+git add .
+git commit -m "Add GitHub Pages deployment workflow"
+git push origin master
+```
+
+Or to create/push `main` from your current branch:
+
+```bash
+git branch -M main
+git push origin main
+```
+
+3. GitHub Actions will run the workflow and push a `gh-pages` branch containing the published site.
+4. In your repository on GitHub go to Settings → Pages and set Source to the `gh-pages` branch (if GitHub doesn't already show the published site). The Actions workflow usually sets up the `gh-pages` branch automatically but you may need to select it once.
 
 Notes & troubleshooting:
 - The workflow uses the built-in `GITHUB_TOKEN` so no extra secrets are required.
@@ -55,8 +70,13 @@ Notes & troubleshooting:
 - I cannot push to your remote from here. After these files are in your repo, push to GitHub to trigger the action:
 
 ```bash
+# Push current default branch (example: master)
 git add .
 git commit -m "Add GitHub Pages deployment workflow"
+git push origin master
+
+# Or rename current branch to main and push
+git branch -M main
 git push origin main
 ```
 
